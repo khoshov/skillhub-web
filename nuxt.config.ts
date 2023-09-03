@@ -10,4 +10,10 @@ export default defineNuxtConfig({
   meta: {
     title: "Skillhub",
   },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api'
+    }
+  },
+  buildModules: ['@nuxtjs/date-fns']
 })

@@ -1,29 +1,38 @@
 <template>
-  <div class="sort">
-    <p>Сначала</p>
-    <form id="filter-form" class="filter">
-
-      <input name="categories" type="hidden" value="{{ category.id }}">
-
-      <input id="free" name="free" type="hidden">
-      <div>
-        <div class="form-row form-margin align-items-center">
-          <div class="col-lg">
-            <div class="custom-sel">
-              <select id="filter-select" class="form-control" name="sort">
-                <option></option>
-                <option data-free="" selected value="">Популярные</option>
-                <option data-free="true" value="">Бесплатные</option>
-                <option data-free="false" value="price">Сначала дешевые</option>
-                <option data-free="false" value="-price">Сначала дорогие</option>
-                <option data-free="" value="duration">Сначала короткие</option>
-                <option data-free="" value="-duration">Сначала долгие</option>
-                <option data-free="" value="-rating">С высоким рейтингом</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+  <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
+    <UButton color="white" label="Options" trailing-icon="i-heroicons-chevron-down-20-solid" />
+  </UDropdown>
 </template>
+
+<script setup>
+const items = [
+  [{
+    label: 'Profile',
+    avatar: {
+      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+    }
+  }], [{
+    label: 'Edit',
+    icon: 'i-heroicons-pencil-square-20-solid',
+    shortcuts: ['E'],
+    click: () => {
+      console.log('Edit')
+    }
+  }, {
+    label: 'Duplicate',
+    icon: 'i-heroicons-document-duplicate-20-solid',
+    shortcuts: ['D'],
+    disabled: true
+  }], [{
+    label: 'Archive',
+    icon: 'i-heroicons-archive-box-20-solid'
+  }, {
+    label: 'Move',
+    icon: 'i-heroicons-arrow-right-circle-20-solid'
+  }], [{
+    label: 'Delete',
+    icon: 'i-heroicons-trash-20-solid',
+    shortcuts: ['⌘', 'D']
+  }]
+]
+</script>
