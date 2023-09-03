@@ -1,13 +1,5 @@
 <template>
-  <div>
-    <NuxtLayout>
-      
-    </NuxtLayout>
-  </div>
+  <NuxtLayout>
+    <NuxtPage/>
+  </NuxtLayout>
 </template>
-
-<script>
-  export default {
-       
-    }
-</script>
