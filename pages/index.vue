@@ -1,10 +1,10 @@
 <template>
   <div class="container">
- 
     <Filters/>
-  
-    <div v-for="course in courseStore.courses" class="schools">
-      <Course :course="course"/>
+    <div class="wrap">
+      <div v-for="course in courseStore.courses" class="schools">
+        <Course :course="course"/>
+      </div>
     </div>
   </div>
   <InfiniteLoading @infinite="loadData"/>
@@ -30,3 +30,25 @@ const loadData = async $state => {
   courseStore.nextPage();
 }
 </script>
+
+<style lang="css">
+  .wrap {
+    display: -webkit-flex;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-flex-wrap: wrap;
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+   gap: 16px;
+  }
+
+  .schools {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .school-card {
+    height: 100%;
+  }
+</style>
