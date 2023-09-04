@@ -1,7 +1,8 @@
 <template>
   <div class="container">
+ 
     <Filters/>
-    <Sort/>
+  
     <div v-for="course in courses" class="schools">
       <Course :course="course"/>
     </div>

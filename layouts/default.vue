@@ -3,7 +3,11 @@
     <header class="header">
       <div class="container">
         <Navigation/>
-        <h1 class="main-title">Разработка</h1>
+        <div class="title-wrapper">
+          <h1 class="main-title">Разработка</h1>
+        <p>Мы собрали для вас лучшие курсы frontend разработки в одном месте. Вы можете сравнить курсы по трем направлениям во фронтенд разработке. Здесь есть подходящие курсы фронтенд разработчика для обучения с нуля. Также найдутся курсы, чтобы углубить знания в конкретной области, пройти повышение квалификации или переподготовку. В каталоге курсов есть все ― от элементарной верстки сайта до веб-разработки на React</p>
+        </div>
+        
       </div>
     </header>
 
@@ -23,3 +27,16 @@ export default {
   components: {Footer, Navigation}
 }
 </script>
+
+<style scoped lang="scss">
+.title-wrapper {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 26px;
+  
+  p {
+    max-width: 688px;
+    margin-left: 64px;
+  }
+}
+</style>

@@ -16,3 +16,30 @@
     </div>
   </footer>
 </template>
+
+<style scoped lang="scss">
+  .footer {
+    margin-top: 72px;
+}
+
+.footer-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+    p {
+        max-width: 688px;
+    }
+}
+
+.connect {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+}
+
+.mail {
+    margin-right: 360px;
+}
+</style>
