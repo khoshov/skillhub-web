@@ -2,10 +2,13 @@
   <div class="container">
  
     <Filters/>
-  
-    <div v-for="course in courses" class="schools">
+    <div class="wrap">
+      <div v-for="course in courses" class="schools">
       <Course :course="course"/>
     </div>
+
+    </div>
+    
   </div>
   <InfiniteLoading @infinite="loadData"/>
 </template>
@@ -34,3 +37,17 @@ const loadData = async $state => {
   page++;
 }
 </script>
+
+<style lang="scss">
+  .wrap {
+    display: table;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+  }
+  
+  .schools {
+    display: table-cell;
+    flex-direction: column;
+  }
+</style>

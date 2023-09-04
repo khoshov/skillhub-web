@@ -38,3 +38,22 @@ import {ru} from 'date-fns/locale';
 
 const props = defineProps(['course'])
 </script>
+
+<style lang="scss">
+.school-card {
+    background-color: #fff;
+    width: 325px;
+    border-radius: 24px;
+}
+
+.card-wrapper {
+    padding: 16px;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+</style>
