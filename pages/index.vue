@@ -38,16 +38,24 @@ const loadData = async $state => {
 }
 </script>
 
-<style lang="scss">
+<style lang="css">
   .wrap {
-    display: table;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: space-between;
+    display: -webkit-flex;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-flex-wrap: wrap;
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+   gap: 16px;
   }
   
   .schools {
-    display: table-cell;
-    flex-direction: column;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .school-card {
+    height: 100%;
   }
 </style>
