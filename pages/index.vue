@@ -3,7 +3,7 @@
  
     <Filters/>
   
-    <div v-for="course in courses" class="schools">
+    <div v-for="course in courseStore.courses" class="schools">
       <Course :course="course"/>
     </div>
   </div>
@@ -16,21 +16,17 @@ import Sort from "../components/Sort";
 import Course from "../components/Course";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
-import { ref } from "vue";
+import {useCourseStore} from "../stores/course";
 
-const config = useRuntimeConfig()
-
-const courses = ref([]);
-let page = 1;
+const courseStore = useCourseStore();
 
 const loadData = async $state => {
-  const {data} = await useFetch(`/courses/?page=${page}`, {baseURL: config.public.apiBase})
-  courses.value.push(...data.value);
-  if (data.value.length < 10) {
+  await courseStore.getCourses()
+  if (courseStore.previousPage.length < 10) {
     $state.complete();
   } else {
     $state.loaded();
   }
-  page++;
+  courseStore.nextPage();
 }
 </script>

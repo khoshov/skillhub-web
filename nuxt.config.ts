@@ -1,6 +1,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxthq/ui'],
+  modules: [
+      '@nuxthq/ui',
+      '@pinia/nuxt',
+  ],
   css: ['~/assets/scss/style.scss'],
   script: [
     {
