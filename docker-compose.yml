@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nuxt:
+    container_name: nuxt
+    build: .
+    env_file:
+      - .env
+    command: /usr/src/app/entrypoint.sh
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: nginxproxy/nginx-proxy
+    restart: always
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
+    depends_on:
+      - nuxt
+  nginx-proxy-acme:
+    container_name: nginx-proxy-acme
+    image: nginxproxy/acme-companion
+    env_file:
+      - .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - acme:/etc/acme.sh
+    depends_on:
+      - nginx-proxy
+volumes:
+  certs:
+  html:
+  vhost:
+  acme:
