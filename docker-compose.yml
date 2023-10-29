@@ -6,9 +6,7 @@ services:
     build: .
     env_file:
       - .env
-    command: /usr/src/app/entrypoint.sh
-    volumes:
-      - .:/usr/src/app
+    command: node .output/server/index.mjs
     ports:
       - "3000:3000"
   nginx-proxy:

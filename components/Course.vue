@@ -34,7 +34,7 @@
 
 <script setup>
 import * as dateFns from "date-fns";
-import {ru} from 'date-fns/locale';
+import ru from 'date-fns/locale/ru/index.js';
 
 const props = defineProps(['course'])
 </script>

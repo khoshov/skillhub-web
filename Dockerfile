@@ -5,11 +5,12 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # install dependencies
-COPY package*.json ./
+COPY package.json .
+COPY package-lock.json .
 RUN npm i
 
 # copy project files
 COPY . .
 
 # build
-RUN nuxt build
+RUN npm run build
