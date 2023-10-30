@@ -14,12 +14,6 @@ export default defineNuxtConfig({
             })
         },
     ],
-    css: ['~/assets/scss/style.scss'],
-    script: [
-        {
-            src: 'bootstrap/dist/js/bootstrap.bundle.min.js'
-        }
-    ],
     meta: {
         title: "Skillhub",
     },

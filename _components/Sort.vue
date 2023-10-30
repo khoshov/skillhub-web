@@ -13,9 +13,11 @@
 // courseStore.setOrder('popular')
 // courseStore.getCourses()
 
+import { ref } from 'vue'
+
 const items = ['Популярные', 'Бесплатные', 'Дешевые', 'Дорогие', 'Короткие', 'Долгие', 'Высокий рейтинг']
 
-let value = items[0]
+let value = ref(items[0])
 
 const doSomething = (e) => {
   console.log(e)

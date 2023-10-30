@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/${course.slug}`">
+  <NuxtLink :to="`/courses/${course.slug}`">
     <div class="school-card">
       <div class="card-wrapper">
         <div class="card-title">
