@@ -1,54 +1,74 @@
 <template>
-  <div class="container">
-    <Filters/>
-    <div class="wrap">
-      <div v-for="course in courseStore.courses" class="schools">
-        <Course :course="course"/>
-      </div>
-    </div>
-  </div>
-  <InfiniteLoading @infinite="loadData"/>
+  <v-app-bar flat="true">
+    <v-container>
+      <v-row>
+        <v-col class="d-flex align-center justify-center">
+          <v-avatar
+              class="me-4 "
+              color="grey-darken-1"
+              size="32"
+          ></v-avatar>
+
+          <v-btn
+              v-for="link in links"
+              :key="link"
+              :text="link"
+              variant="text"
+          ></v-btn>
+
+          <v-spacer></v-spacer>
+
+          <v-responsive max-width="160">
+            <v-text-field
+                density="compact"
+                flat="true"
+                hide-details
+                label="Search"
+                rounded="lg"
+                single-line="true"
+                variant="solo-filled"
+            ></v-text-field>
+          </v-responsive>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-app-bar>
+
+  <v-main>
+    <v-container>
+      <v-row>
+        <v-col>
+          <h2 class="text-h2">Все онлайн-курсы frontend разработки</h2>
+          <p class="mt-8">Мы собрали для вас лучшие курсы frontend разработки в одном месте. Вы можете сравнить курсы по трем направлениям во фронтенд разработке. Здесь есть подходящие курсы фронтенд разработчика для обучения с нуля. Также найдутся курсы, чтобы углубить знания в конкретной области, пройти повышение квалификации или переподготовку. В каталоге курсов есть все ― от элементарной верстки сайта до веб-разработки на React</p>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <!--courses-->
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-main>
 </template>
 
 <script setup>
-import Filters from "../components/Filters";
-import Sort from "../components/Sort";
-import Course from "../components/Course";
-import InfiniteLoading from "v3-infinite-loading";
-import "v3-infinite-loading/lib/style.css";
-import {useCourseStore} from "../stores/course";
-
-const courseStore = useCourseStore();
-
-const loadData = async $state => {
-  await courseStore.getCourses()
-  if (courseStore.previousPage.length < 10) {
-    $state.complete();
-  } else {
-    $state.loaded();
-  }
-  courseStore.nextPage();
-}
+const links = [
+  'Dashboard',
+  'Messages',
+  'Profile',
+  'Updates',
+]
 </script>
 
-<style lang="css">
-  .wrap {
-    display: -webkit-flex;
-   display: -ms-flexbox;
-   display: flex;
-   -webkit-flex-wrap: wrap;
-   -ms-flex-wrap: wrap;
-   flex-wrap: wrap;
-   gap: 16px;
-  }
-
-  .schools {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-
-  .school-card {
-    height: 100%;
-  }
-</style>
+<script>
+export default {
+  data: () => ({
+    links: [
+      'Dashboard',
+      'Messages',
+      'Profile',
+      'Updates',
+    ],
+  }),
+}
+</script>
