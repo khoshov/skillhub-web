@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia'
-import {useFetch, useRuntimeConfig} from "nuxt/app";
+import {useFetch, useRoute, useRuntimeConfig} from "nuxt/app";
 
 
 export const useCourseStore = defineStore({
@@ -7,22 +7,23 @@ export const useCourseStore = defineStore({
     state: () => ({
         courses: [],
         previousPage: [],
-        page: 1,
         category: null,
-        order: null,
+        page: 1,
     }),
     actions: {
-        async getCourses() {
+        async fetchCourses(append) {
             const config = useRuntimeConfig();
+            const route = useRoute();
+            const slug = route.params.slug;
             const params = {};
             if (this.page) {
                 params['page'] = this.page;
             }
-            if (this.category) {
-                params['category'] = this.category;
-            }
             if (this.order) {
                 params['order'] = this.order;
+            }
+            if (slug) {
+                params['category'] = slug;
             }
             const url = `/courses/?${new URLSearchParams(params)}`;
             console.log(url)
@@ -33,8 +34,5 @@ export const useCourseStore = defineStore({
         nextPage() {
             this.page++
         },
-        setOrder(field) {
-            this.order = field
-        }
     },
 })
